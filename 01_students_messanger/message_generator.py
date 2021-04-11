@@ -31,10 +31,15 @@ def create_split_data():
 
 def load_msg_file_and_send():
     message_file = 'message.txt'
-    with open(message_file, 'r', encoding='utf-8-sig') as fopen:
-        message = fopen.read()
-    for name, task, grade in zip(names, tasks, grades):
-        print(message.format(name, task, grade, int(grade) + 1))
+    try:
+        with open(message_file, 'r', encoding='utf-8-sig') as fopen:
+            message = fopen.read()
+        for name, task, grade in zip(names, tasks, grades):
+            print(message.format(name, task, grade, int(grade) + 1))
+    except FileNotFoundError as err:
+        print('Sorry. File has been not found: ', message_file)
+
+
 
 
 if __name__ == '__main__':
