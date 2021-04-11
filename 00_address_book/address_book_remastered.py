@@ -12,7 +12,6 @@ with open(filename, 'w+') as f:
 
 
 def save_to_file(list):
-    filename = 'numbers_book.json'
     with open(filename, 'w') as f:
         json.dump(contact_list, f)
 
@@ -38,16 +37,13 @@ def load_list_of_entries():
 def add_contact(list):
     print('---> Add contact is open <----')
     full_name = str(input('Enter name: '))
-    try:
-        phone_number = int(input('Enter phone number: '))
-    except ValueError as err:
-        print('Error: ', err)
-    finally:
-        phone_number = int(input('Enter phone number: '))
-
-    add_entry = {full_name: phone_number}
-    contact_list.append(add_entry)
-
+    while True:
+        try:
+            phone_number = int(input('Enter phone number: '))
+            add_entry = {full_name: phone_number}
+            contact_list.append(add_entry)
+        except ValueError as err:
+            print('That was no valid number. Try again: ', err)
     print('---> Add contact is closed <----')
 
 
