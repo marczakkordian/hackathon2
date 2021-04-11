@@ -40,8 +40,6 @@ def load_msg_file_and_send():
         print('Sorry. File has been not found: ', message_file)
 
 
-
-
 if __name__ == '__main__':
     open_source_file()
     create_split_data()
